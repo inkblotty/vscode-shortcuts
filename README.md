@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## TODO:
+- Styling
+- Randomize current question index
+- Allow user to add custom questions saved to localStorage
+
 ## Available Scripts
 
 In the project directory, you can run:
