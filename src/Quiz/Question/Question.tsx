@@ -5,7 +5,7 @@ import { QuestionType } from '../quiz.d';
 interface QuestionProps extends QuestionType {
   goToNextQuestion: (e?: any) => void;
 }
-const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
+const Question = ({ answerKeys, answerKeysDisplay, goToNextQuestion, title }: QuestionProps) => {
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   const { recentKeys, clearKeys } = useHandleKeys([]);
   const isCorrect = !!recentKeys.length && recentKeys.slice(answerKeys.length * -1).reduce((prev, key, i) => prev && key === answerKeys[i], true);
@@ -33,7 +33,7 @@ const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
       </code>
 
       {isAnswerVisible || isCorrect
-        ? <div>Answer: {answerKeys.join(' ')}</div>
+        ? <div>Answer: {(answerKeysDisplay || answerKeys).join(' ')}</div>
         : null
       }
 
