@@ -14,4 +14,16 @@ export const defaultQuestions : QuestionType[] = [
     answerKeys: ['Alt', '∑'],
     answerKeysDisplay: ['Option', 'w'],
   },
+  {
+    title: 'Go to Symbol in Workspace',
+    answerKeys: ['Meta', 'p', '#'],
+  },
+  {
+    title: 'Go to Symbol in File',
+    answerKeys: ['Meta', 'p', '@'],
+  },
+  {
+    title: 'Go to Line number',
+    answerKeys: ['Meta', 'p', ':'],
+  }
 ];
