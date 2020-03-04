@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { handleKeys } from './hooks';
+import { useHandleKeys } from './hooks';
 import { QuestionType } from '../quiz.d';
 
 interface QuestionProps extends QuestionType {
@@ -7,8 +7,8 @@ interface QuestionProps extends QuestionType {
 }
 const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-  const { recentKeys, clearKeys } = handleKeys();
-  const isCorrect = recentKeys.slice(answerKeys.length * -1).reduce((prev, key, i) => prev && key === answerKeys[i], true);
+  const { recentKeys, clearKeys } = useHandleKeys([]);
+  const isCorrect = !!recentKeys.length && recentKeys.slice(answerKeys.length * -1).reduce((prev, key, i) => prev && key === answerKeys[i], true);
 
   useEffect(() => {
     if (recentKeys.length) {
@@ -16,6 +16,13 @@ const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
     }
     setIsAnswerVisible(false);
   }, [title]);
+
+  const showAnswer = (e: any) => {
+    if (e) {
+      e.preventDefault();
+    }
+    setIsAnswerVisible(true);
+  }
 
   return (
     <div>
@@ -25,9 +32,12 @@ const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
         {recentKeys.map(key => <div>{key}</div>)}
       </code>
 
-      {isAnswerVisible && <div>Answer: {answerKeys.join(' ')}</div>}
+      {isAnswerVisible || isCorrect
+        ? <div>Answer: {answerKeys.join(' ')}</div>
+        : null
+      }
 
-      <button disabled={isCorrect}>Show Answer</button>
+      <button disabled={isCorrect || isAnswerVisible} onClick={showAnswer}>Show Answer</button>
       <button onClick={goToNextQuestion}>Next Question</button>
     </div>
   )

@@ -8,7 +8,7 @@ const Quiz = () => {
     if (e) {
       e.preventDefault();
     }
-    if (defaultQuestions.length >= activeQuestionIndex + 1) {
+    if (defaultQuestions.length > activeQuestionIndex + 1) {
       setActiveQuestionIndex(activeQuestionIndex + 1);
     } else {
       setActiveQuestionIndex(0);

@@ -1,8 +1,9 @@
 import { useState } from "react";
 
-export const handleKeys = () => {
-  const [recentKeys, setRecentKeys] = useState<string[]>([]);
+export const useHandleKeys = (initial: KeyboardEvent['key'][]) => {
+  const [recentKeys, setRecentKeys] = useState<KeyboardEvent['key'][]>(initial);
   window.onkeydown = (e: any) => {
+    e.preventDefault();
     const { key } = e;
     setRecentKeys([...recentKeys, key]);
   }
