@@ -1,7 +1,7 @@
 import { QuestionType } from "./quiz.d";
 
 // helpful: https://keycode.info/
-// should I make answerkeys numbers instead? is event.code more accurate?
+// is event.code more accurate?
 export const defaultQuestions : QuestionType[] = [
   {
     title: 'Open the Command Palette',
