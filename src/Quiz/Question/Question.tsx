@@ -50,12 +50,12 @@ const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
     <div>
       <h2>{title}</h2>
 
-      <code>
-        {recentKeys.map(key => <div>{mapKey(key)}</div>)}
-      </code>
+      <div className='code-wrapper'>
+        {recentKeys.map(key => <code>{mapKey(key)}</code>)}
+      </div>
 
       {isAnswerVisible || isCorrect
-        ? <div>Answer: {mappedAnswerKeys.join(' ')}</div>
+        ? <div className='answer-wrapper'>Answer: {mappedAnswerKeys.join(' ')}</div>
         : null
       }
 
