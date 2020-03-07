@@ -1,7 +1,7 @@
 import { QuestionType } from "./quiz.d";
 
 // helpful: https://keycode.info/
-// currently using event.code
+// currently using event.code, which we can use to enforce correct keyboard hand placement
 export const defaultQuestions : QuestionType[] = [
   {
     title: 'Open the Command Palette',
@@ -10,7 +10,7 @@ export const defaultQuestions : QuestionType[] = [
   {
     title: 'Wrap several lines of code',
     description: 'Either using wrapper element like <div></div> or in { }, for example',
-    answerKeys: ['AltLeft', 'KeyW'],
+    answerKeys: ['AltRight', 'KeyW'],
   },
   {
     title: 'Go to Symbol in Workspace',
@@ -26,7 +26,7 @@ export const defaultQuestions : QuestionType[] = [
   },
   {
     title: 'Select next instance of highlighted character(s)',
-    answerKeys: ['MetaLeft', 'KeyD'],
+    answerKeys: ['MetaRight', 'KeyD'],
   },
   {
     title: 'Return to previous cursor position',

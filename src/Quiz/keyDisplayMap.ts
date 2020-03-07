@@ -3,13 +3,15 @@ interface MappedKeys {
 }
 const mappedKeys : MappedKeys = {
   AltLeft: 'Option',
+  AltRight: 'Option',
   KeyD: 'd',
   KeyP: 'p',
   KeyU: 'u',
   KeyW: 'w',
   MetaLeft: 'Command',
+  MetaRight: 'Command',
 };
 export const isMappableKey = (keyToCheck: any) : keyToCheck is keyof MappedKeys => {
-  return typeof keyToCheck === 'number' && mappedKeys.hasOwnProperty(keyToCheck)
+  return typeof keyToCheck === 'string' && mappedKeys.hasOwnProperty(keyToCheck)
 }
 export default mappedKeys;

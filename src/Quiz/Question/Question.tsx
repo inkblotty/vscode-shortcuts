@@ -21,6 +21,22 @@ const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
     setIsAnswerVisible(false);
   }, [title]);
 
+  useEffect(() => {
+    if (isAnswerVisible) {
+      // focus on Next Question button
+      const button = document.getElementById('nextQuestionButton');
+      if (button) {
+        button.focus();
+      }
+    } else {
+      // focus on Show Answer
+      const button = document.getElementById('showAnswerButton');
+      if (button) {
+        button.focus();
+      }
+    }
+  }, [isAnswerVisible]);
+
   const showAnswer = (e: any) => {
     if (e) {
       e.preventDefault();
@@ -43,8 +59,8 @@ const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
         : null
       }
 
-      <button disabled={isCorrect || isAnswerVisible} onClick={showAnswer}>Show Answer</button>
-      <button onClick={goToNextQuestion}>Next Question</button>
+      <button id='showAnswerButton' disabled={isCorrect || isAnswerVisible} onClick={showAnswer}>Show Answer</button>
+      <button id='nextQuestionButton' onClick={goToNextQuestion}>Next Question</button>
     </div>
   )
 }
