@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useHandleKeys } from './hooks';
 import { QuestionType } from '../quiz.d';
+import keyDisplayMap, { isMappableKey } from '../keyDisplayMap';
 
 interface QuestionProps extends QuestionType {
   goToNextQuestion: (e?: any) => void;
 }
-const Question = ({ answerKeys, answerKeysDisplay, goToNextQuestion, title }: QuestionProps) => {
+const mapKey = (key: any) => (
+  isMappableKey(key) ? keyDisplayMap[key] : key
+);
+const Question = ({ answerKeys, goToNextQuestion, title }: QuestionProps) => {
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
   const { recentKeys, clearKeys } = useHandleKeys([]);
   const isCorrect = !!recentKeys.length && recentKeys.slice(answerKeys.length * -1).reduce((prev, key, i) => prev && key === answerKeys[i], true);
@@ -24,16 +28,18 @@ const Question = ({ answerKeys, answerKeysDisplay, goToNextQuestion, title }: Qu
     setIsAnswerVisible(true);
   }
 
+  const mappedAnswerKeys = answerKeys.map(mapKey);
+
   return (
     <div>
       <h2>{title}</h2>
 
       <code>
-        {recentKeys.map(key => <div>{key}</div>)}
+        {recentKeys.map(key => <div>{mapKey(key)}</div>)}
       </code>
 
       {isAnswerVisible || isCorrect
-        ? <div>Answer: {(answerKeysDisplay || answerKeys).join(' ')}</div>
+        ? <div>Answer: {mappedAnswerKeys.join(' ')}</div>
         : null
       }
 

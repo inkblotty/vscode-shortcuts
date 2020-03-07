@@ -1,37 +1,35 @@
 import { QuestionType } from "./quiz.d";
 
 // helpful: https://keycode.info/
-// is event.code more accurate?
+// currently using event.code
 export const defaultQuestions : QuestionType[] = [
   {
     title: 'Open the Command Palette',
-    answerKeys: ['Meta', 'p'],
-    answerKeysDisplay: ['Command', 'p'],
+    answerKeys: ['MetaLeft', 'KeyP'],
   },
   {
     title: 'Wrap several lines of code',
     description: 'Either using wrapper element like <div></div> or in { }, for example',
-    answerKeys: ['Alt', '∑'],
-    answerKeysDisplay: ['Option', 'w'],
+    answerKeys: ['AltLeft', 'KeyW'],
   },
   {
     title: 'Go to Symbol in Workspace',
-    answerKeys: ['Meta', 'p', '#'],
+    answerKeys: ['MetaLeft', 'KeyP', 'Shift', 'Digit3'],
   },
   {
     title: 'Go to Symbol in File',
-    answerKeys: ['Meta', 'p', '@'],
+    answerKeys: ['MetaLeft', 'KeyP', 'Shift', 'Digit2'],
   },
   {
     title: 'Go to Line number',
-    answerKeys: ['Meta', 'p', ':'],
+    answerKeys: ['MetaLeft', 'KeyP', 'Shift', 'Semicolon'],
   },
   {
     title: 'Select next instance of highlighted character(s)',
-    answerKeys: ['Meta', 'd'],
+    answerKeys: ['MetaLeft', 'KeyD'],
   },
   {
     title: 'Return to previous cursor position',
-    answerKeys: ['Meta', 'u'],
+    answerKeys: ['MetaLeft', 'KeyU'],
   }
 ];
